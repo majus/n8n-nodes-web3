@@ -1,19 +1,26 @@
-## About 
+## About
 
-**n8n × web3** is a suite of custom nodes designed for n8n — an open-source no-code platform. Our project provide seamless web3 integrations, enabling users to effortlessly interact with various blockchain protocols without writing a single line of code.
+**n8n × web** is a collection of custom nodes built for n8n, the popular open-source no-code workflow automation tool.
 
-## Problem statement
+While n8n is fantastic for automating tasks without needing to code, it doesn’t currently support blockchain integrations.
 
-While n8n excels in workflow automation for both non-technical users and professional developers, it currently lacks native integrations with blockchain technologies. 
+![n8n-web3-2025-01-21-1421](./assets/n8n-now.png)
 
-Even submitting a simple transaction, such as sending a native blockchain token or invoking a smart contract method, is currently only possible using custom JavaScript code. Worse, it requires importing external NPM packages to perform cryptographic operations, which is impossible for cloud-hosted and quite challenging for self-hosted n8n deployments.
+That’s where we come in! Our project adds seamless web3 functionalities, making it easy for anyone to interact with various blockchain protocols right within n8n.
 
-![n8n-web3-2025-01-21-1421](https://github.com/user-attachments/assets/783302c8-a6d2-4eba-9fbe-6db261ce7b4d)
+![n8n-web3-2025-01-21-1421](./assets/n8n-web3.png)
 
-This project was born to address these challenges. Our custom nodes simplify common blockchain interactions, such as data conversion between JavaScript and Solidity, ECDSA signing, raw transaction sending, automatic transaction data generation from Smart Contract ABIs, and event listening through custom workflow triggers.
+## Capabilities
 
-![n8n-web3-2025-01-21-1422](https://github.com/user-attachments/assets/75af28ca-157a-4caf-9105-9858e9e12c42)
+With **n8n × web3**, no-code developers can effortlessly add blockchain features to their workflows. Plus, pro web3 developers can quickly prototype their decentralized apps and blockchain solutions without the hassle. Our custom nodes handle common blockchain tasks like:
 
-## Long-term Goals
+- Converting data between JavaScript and Solidity
+- Signing data with ECDSA
+- Sending raw transactions via JSON RPC
+- Automatically generating transaction data from Smart Contract ABIs
+- Using standard Smart Contract ABIs without any coding
+- Listening for blockchain events to trigger workflows
 
-Our long-term vision is to evolve the project into a comprehensive, community-owned toolkit that supports a wide range of blockchain protocols and advanced use cases. Eventually, these tools aim to be integrated as embedded nodes within n8n, comparable to the existing ~200 embedded web2 service nodes, thereby expanding n8n’s versatility and fostering innovation in the decentralized ecosystem.
+## Looking ahead
+
+Down the road, we’d love to expand even more—think support for non-EVM blockchains like Bitcoin, Solana, and Flow, or adding tools for working directly with Solidity and managing ZK proofs. Eventually, we aim to have these nodes integrated into n8n’s core, joining the existing ~200 web2 service nodes and making blockchain automation a breeze for everyone.
