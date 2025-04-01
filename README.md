@@ -42,6 +42,8 @@ Currently, there are following custom nodes available:
 - "Lilypad Generic Job" — allows to issue generic job to the [Lilypad](https://lilypad.tech/) TEE.
 - "Lilypad Llama3 Job" — allows to issue Llama3 specific job to the [Lilypad](https://lilypad.tech/) TEE.
 - "Squid Router" — allows to perform token swaps between different blockchains via the [Squid Router](https://www.squidrouter.com/) API.
+- "Flow Mutate" — allows to perform the [Flow blockchain](https://flow.com) write operations via FVM.
+- "Flow Query" — allows to perform the [Flow blockchain](https://flow.com) read operations via FVM.
 
 We plant for our future custom nodes handle common blockchain tasks like:
 
