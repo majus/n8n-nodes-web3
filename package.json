@@ -1,9 +1,16 @@
 {
 	"name": "@majus/n8n-nodes-web3",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Collection of custom n8n nodes for web3 & blockchain integration",
 	"keywords": [
-		"n8n-community-node-package"
+		"n8n-community-node-package",
+		"squid",
+		"farcaster",
+		"lilypad",
+		"web3",
+		"blockchain",
+		"ethereum",
+		"flow"
 	],
 	"license": "MIT",
 	"homepage": "https://github.com/majus/n8n-nodes-web3",
