@@ -62,7 +62,8 @@
 		"n8n-workflow": "*"
 	},
 	"dependencies": {
-		"@0xsquid/sdk": "^2.9.3",
+		"@0xsquid/squid-types": "^0.1.146",
+		"@0xsquid/sdk": "^2.8.11",
 		"@onflow/fcl": "^1.15.0",
 		"@onflow/types": "^1.4.1",
 		"elliptic": "^6.6.1",
