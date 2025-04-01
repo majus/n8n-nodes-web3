@@ -11,14 +11,14 @@ import { Property } from './commons';
 
 export class FlowChainQuery implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'The Flow Query',
+		displayName: 'Flow Query',
 		name: 'flowChainQuery',
 		group: ['transform', 'output'],
 		version: 1,
 		description: 'Call query script on the Flow blockchain (Testnet)',
 		icon: 'file:flow.svg',
 		defaults: {
-			name: 'The Flow - Query',
+			name: 'Flow - Query',
 		},
 		// @ts-ignore
 		inputs: ['main'],
@@ -39,11 +39,8 @@ export class FlowChainQuery implements INodeType {
 				placeholder: 'Add Option',
 				default: {},
 				description: 'Additional options',
-				options: [
-					Property.Arguments,
-					Property.ArgumentsField,
-				],
-			}
+				options: [Property.Arguments, Property.ArgumentsField],
+			},
 		],
 	};
 

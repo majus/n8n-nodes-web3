@@ -2,14 +2,14 @@
 import { IExecuteFunctions } from 'n8n-core';
 import { INodeType, INodeExecutionData, INodeTypeDescription } from 'n8n-workflow';
 
-export class EthereumTxBuilder implements INodeType {
+export class FarcasterTxBuilder implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Farcaster: Transaction builder',
-		name: 'ethereumTxBuilder',
-		icon: 'file:EthereumTxBuilder.svg',
+		name: 'farcasterTxBuilder',
+		icon: 'file:FarcasterTxBuilder.svg',
 		group: ['transform', 'output'],
 		version: 1,
-		description: 'Generates Framecaster frame transaction object',
+		description: 'Generates Farcaster frame transaction object',
 		defaults: {
 			name: 'Build Tx',
 		},
@@ -134,7 +134,10 @@ export class EthereumTxBuilder implements INodeType {
 			const to = this.getNodeParameter('recipient', i) as string;
 			const method = this.getNodeParameter('method', i) as string;
 			const value = this.getNodeParameter('value', i) as string;
-			const { data, abi, attribution } = this.getNodeParameter('additionalFields', i) as IDataObject;
+			const { data, abi, attribution } = this.getNodeParameter(
+				'additionalFields',
+				i,
+			) as IDataObject;
 			const json = {
 				chainId,
 				method,

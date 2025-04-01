@@ -11,14 +11,14 @@ import { isString } from 'lodash';
 
 export class FlowChainMutate implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'The Flow Mutate',
+		displayName: 'Flow Mutate',
 		name: 'flowChainMutate',
 		group: ['transform', 'output'],
 		version: 1,
 		description: 'Call mutate script on the Flow blockchain (Testnet)',
 		icon: 'file:flow.svg',
 		defaults: {
-			name: 'The Flow - Mutate',
+			name: 'Flow - Mutate',
 		},
 		// @ts-ignore
 		inputs: ['main'],
@@ -39,12 +39,8 @@ export class FlowChainMutate implements INodeType {
 				placeholder: 'Add Option',
 				default: {},
 				description: 'Additional options',
-				options: [
-					Property.Arguments,
-					Property.ArgumentsField,
-					Property.Limit,
-				],
-			}
+				options: [Property.Arguments, Property.ArgumentsField, Property.Limit],
+			},
 		],
 	};
 

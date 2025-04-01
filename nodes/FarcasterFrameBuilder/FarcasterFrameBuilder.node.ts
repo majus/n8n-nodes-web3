@@ -8,11 +8,11 @@ import {
 	IN8nHttpFullResponse,
 } from 'n8n-workflow';
 
-export class FrameBuilder implements INodeType {
+export class FarcasterFrameBuilder implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Farcaster: Frame builder',
-		name: 'frameBuilder',
-		icon: 'file:FrameBuilder.svg',
+		name: 'farcasterFrameBuilder',
+		icon: 'file:FarcasterFrameBuilder.svg',
 		group: ['transform', 'output'],
 		version: 1,
 		description: 'Generates Framecaster HTML with meta tags for provided frame parameters',
