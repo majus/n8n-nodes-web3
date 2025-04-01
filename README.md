@@ -4,7 +4,6 @@
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-
 ## Installation
 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
@@ -38,8 +37,10 @@ With **n8n × web3**, no-code developers can effortlessly add blockchain feature
 
 Currently, there are following custom nodes available:
 
-- "Farcaster: Frame builder" — allows to build Farcaster frames standard compliant HTML markup.
-- "Farcaster: Transaction builder" — simplifies creating Farcaster frames standard compliant transaction request data.
+- "Farcaster: Frame builder" — allows to build [Farcaster frames standard](https://docs.farcaster.xyz/developers/frames/) compliant HTML markup.
+- "Farcaster: Transaction builder" — simplifies creating [Farcaster frames standard](https://docs.farcaster.xyz/developers/frames/) compliant transaction request data.
+- "Lilypad Generic Job" — allows to issue generic job to the [Lilypad](https://lilypad.tech/) TEE.
+- "Lilypad Llama3 Job" — allows to issue Llama3 specific job to the [Lilypad](https://lilypad.tech/) TEE.
 
 We plant for our future custom nodes handle common blockchain tasks like:
 
@@ -70,13 +71,13 @@ Down the road, we’d love to expand even more—think support for non-EVM block
 
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 <!-- * _Link to app/service documentation._ -->
 
 <!-- ## Version history
 
 _This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._ -->
 
-## Licence 
+## Licence
 
 [MIT](./LICENSE.md)

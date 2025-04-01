@@ -1,7 +1,7 @@
 {
 	"name": "n8n-nodes-web3",
 	"version": "0.1.0",
-	"description": "",
+	"description": "Collection of custom n8n nodes for web3 & blockchain integration",
 	"keywords": [
 		"n8n-community-node-package"
 	],
@@ -34,13 +34,18 @@
 	],
 	"n8n": {
 		"n8nNodesApiVersion": 1,
-		"credentials": [],
+		"credentials": [
+			"dist/credentials/LilypadCredentialsApi.credentials.js"
+		],
 		"nodes": [
 			"dist/nodes/FrameBuilder/FrameBuilder.node.js",
-			"dist/nodes/EthereumTxBuilder/EthereumTxBuilder.node.js"
+			"dist/nodes/EthereumTxBuilder/EthereumTxBuilder.node.js",
+			"dist/nodes/LilypadGenericJob/LilypadGenericJob.node.js",
+			"dist/nodes/LilypadLlama3Job/LilypadLlama3Job.node.js"
 		]
 	},
 	"devDependencies": {
+		"@types/lodash": "^4.17.16",
 		"@typescript-eslint/parser": "^7.15.0",
 		"eslint": "^8.56.0",
 		"eslint-plugin-n8n-nodes-base": "^1.16.1",
@@ -50,5 +55,8 @@
 	},
 	"peerDependencies": {
 		"n8n-workflow": "*"
+	},
+	"dependencies": {
+		"lodash": "^4.17.21"
 	}
 }

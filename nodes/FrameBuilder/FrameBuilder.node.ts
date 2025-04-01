@@ -35,8 +35,9 @@ export class FrameBuilder implements INodeType {
 				name: 'openFrames',
 				type: 'boolean',
 				default: true,
-				description: 'Whether to include additional tags to conform to the Open Frames specification',
-				hint: 'Refer the <a href="https://github.com/open-frames/standard" target="_blank">Open Frames</a> standard for details.'
+				description:
+					'Whether to include additional tags to conform to the Open Frames specification',
+				hint: 'Refer the <a href="https://github.com/open-frames/standard" target="_blank">Open Frames</a> standard for details.',
 			},
 			{
 				displayName: 'Buttons',
@@ -113,6 +114,7 @@ export class FrameBuilder implements INodeType {
 				type: 'collection',
 				placeholder: 'Add Field',
 				default: {},
+				// eslint-disable-next-line n8n-nodes-base/node-param-collection-type-unsorted-items
 				options: [
 					{
 						displayName: 'Aspect Ratio',
