@@ -61,6 +61,22 @@ _This is an optional section. Use it to help users with any difficult or confusi
 
 _By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._ -->
 
+## Examples
+
+### Farcaster Tip
+
+Allow users to make a small tip in ETH to any address via Farcaster.
+
+Custom nodes used: Farcaster Frame builder, Farcaster Tx Builder.
+
+How to install:
+
+1. Create a new empty workflow
+1. Import `examples/farcaster-tip.json` into the workflow
+1. Activate the workflow
+1. Copy "Production URL" from the "Webhook" trigger node
+1. Post this link on Farcaster and test it!
+
 ## Roadmap
 
 We plan for our future custom nodes handle common blockchain tasks like:

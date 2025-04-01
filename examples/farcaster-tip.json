@@ -1,0 +1,312 @@
+{
+	"name": "Farcaster Tip example",
+	"nodes": [
+		{
+			"parameters": {
+				"image": "=https://n8n.majus.org/webhook/placeholder?text=Send+some+ETH+to+{{ encodeURIComponent($json.body.untrustedData.inputText.substr(0, 4) + '..' + $json.body.untrustedData.inputText.substr(-2)) }}&fmt=png",
+				"buttons": {
+					"items": [
+						{
+							"label": "Send 0.001 ETH",
+							"action": "tx",
+							"target": "={{ $json.webhookUrl }}?send",
+							"postUrl": "={{ $json.webhookUrl }}"
+						}
+					]
+				},
+				"additionalFields": {}
+			},
+			"id": "848cd2ac-eeb4-4071-b2cf-18002c2cba5b",
+			"name": "Display statement",
+			"type": "@majus/n8n-nodes-web3.farcasterFrameBuilder",
+			"typeVersion": 1,
+			"position": [840, -40]
+		},
+		{
+			"parameters": {
+				"recipient": "={{ $json.body.untrustedData.address }}",
+				"value": "10000000000000",
+				"additionalFields": {}
+			},
+			"id": "813ab831-4993-4034-8657-347aeed1669d",
+			"name": "Build Tx",
+			"type": "@majus/n8n-nodes-web3.farcasterTxBuilder",
+			"typeVersion": 1,
+			"position": [620, 160]
+		},
+		{
+			"parameters": {
+				"respondWith": "text",
+				"responseBody": "={{ $json.html }}",
+				"options": {
+					"responseHeaders": {
+						"entries": [
+							{
+								"name": "content-type",
+								"value": "text/html"
+							}
+						]
+					}
+				}
+			},
+			"type": "n8n-nodes-base.respondToWebhook",
+			"typeVersion": 1.1,
+			"position": [1060, -240],
+			"id": "d0718818-32bb-4df0-b445-9cd58edb4de7",
+			"name": "Respond with HTML"
+		},
+		{
+			"parameters": {
+				"options": {}
+			},
+			"type": "n8n-nodes-base.respondToWebhook",
+			"typeVersion": 1.1,
+			"position": [840, 160],
+			"id": "6ee72f1a-3761-448d-a486-346e9302d8d3",
+			"name": "Respond with JSON"
+		},
+		{
+			"parameters": {
+				"multipleMethods": true,
+				"path": "46b309cd-4c92-4e05-a48b-57995ecc7c31",
+				"responseMode": "responseNode",
+				"options": {}
+			},
+			"id": "fe19d79e-81e1-4d3b-8616-02a119e725b1",
+			"name": "Create",
+			"type": "n8n-nodes-base.webhook",
+			"typeVersion": 1.1,
+			"position": [180, -140],
+			"webhookId": "46b309cd-4c92-4e05-a48b-57995ecc7c31"
+		},
+		{
+			"parameters": {
+				"image": "https://n8n.majus.org/webhook/placeholder?text=Send+a+tip&fmt=png",
+				"buttons": {
+					"items": [
+						{
+							"label": "Confirm",
+							"action": "post",
+							"target": "={{ $json.webhookUrl }}"
+						}
+					]
+				},
+				"additionalFields": {
+					"inputTextLabel": "Enter address"
+				}
+			},
+			"id": "6b9ae3ee-6d26-4ae9-a80f-fc0b6c9cbdf2",
+			"name": "Request address",
+			"type": "@majus/n8n-nodes-web3.farcasterFrameBuilder",
+			"typeVersion": 1,
+			"position": [840, -440]
+		},
+		{
+			"parameters": {
+				"conditions": {
+					"options": {
+						"caseSensitive": true,
+						"leftValue": "",
+						"typeValidation": "strict",
+						"version": 2
+					},
+					"conditions": [
+						{
+							"id": "8c9a9acb-fff3-42c2-9195-9bb3b1f4fee9",
+							"leftValue": "={{ $json.body.untrustedData.transactionId }}",
+							"rightValue": "",
+							"operator": {
+								"type": "string",
+								"operation": "exists",
+								"singleValue": true
+							}
+						}
+					],
+					"combinator": "and"
+				},
+				"options": {}
+			},
+			"type": "n8n-nodes-base.if",
+			"typeVersion": 2.2,
+			"position": [620, -140],
+			"id": "e610ba59-e0ee-4432-b85f-7518405f3e30",
+			"name": "If transacted"
+		},
+		{
+			"parameters": {
+				"conditions": {
+					"options": {
+						"caseSensitive": true,
+						"leftValue": "",
+						"typeValidation": "strict",
+						"version": 2
+					},
+					"conditions": [
+						{
+							"id": "0b4ba602-ce79-412a-be5a-b8a9b8b1bb02",
+							"leftValue": "={{ $json.query.send }}",
+							"rightValue": "",
+							"operator": {
+								"type": "string",
+								"operation": "notExists",
+								"singleValue": true
+							}
+						}
+					],
+					"combinator": "and"
+				},
+				"options": {}
+			},
+			"type": "n8n-nodes-base.if",
+			"typeVersion": 2.2,
+			"position": [400, -40],
+			"id": "555818ab-2d3f-4ec5-b029-ff9c7f0b935b",
+			"name": "If display"
+		},
+		{
+			"parameters": {
+				"image": "=https://n8n.majus.org/webhook/placeholder?text=Thanks!&fmt=png",
+				"buttons": {
+					"items": [
+						{
+							"label": "See transaction",
+							"target": "=https://sepolia.etherscan.io/tx/{{ encodeURIComponent($json.body.untrustedData.transactionId) }}",
+							"postUrl": "="
+						}
+					]
+				},
+				"additionalFields": {}
+			},
+			"id": "b4abf4b4-a0dc-4263-8ef1-a8ad24abddbe",
+			"name": "Display result",
+			"type": "@majus/n8n-nodes-web3.farcasterFrameBuilder",
+			"typeVersion": 1,
+			"position": [840, -240]
+		}
+	],
+	"pinData": {},
+	"connections": {
+		"Display statement": {
+			"main": [
+				[
+					{
+						"node": "Respond with HTML",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Build Tx": {
+			"main": [
+				[
+					{
+						"node": "Respond with JSON",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Create": {
+			"main": [
+				[
+					{
+						"node": "Request address",
+						"type": "main",
+						"index": 0
+					}
+				],
+				[
+					{
+						"node": "If display",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Request address": {
+			"main": [
+				[
+					{
+						"node": "Respond with HTML",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"If transacted": {
+			"main": [
+				[
+					{
+						"node": "Display result",
+						"type": "main",
+						"index": 0
+					}
+				],
+				[
+					{
+						"node": "Display statement",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"If display": {
+			"main": [
+				[
+					{
+						"node": "If transacted",
+						"type": "main",
+						"index": 0
+					}
+				],
+				[
+					{
+						"node": "Build Tx",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Display result": {
+			"main": [
+				[
+					{
+						"node": "Respond with HTML",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	},
+	"active": true,
+	"settings": {
+		"executionOrder": "v1"
+	},
+	"versionId": "58640e1c-7c0f-45f1-9f27-dfacf742c9bc",
+	"meta": {
+		"templateCredsSetupCompleted": true,
+		"instanceId": "9a127041ab2c0a456c612db2c737ce582ec8f8dd14205bcdca991d2585b3c019"
+	},
+	"id": "Ecnyf41FfBP6NikM",
+	"tags": [
+		{
+			"name": "farcaster",
+			"id": "DA0xCzMK1tIjfwy9",
+			"createdAt": "2025-04-01T18:18:39.039Z",
+			"updatedAt": "2025-04-01T18:18:39.039Z"
+		},
+		{
+			"name": "web3",
+			"id": "Rd7qq8NCOaSuEgiS",
+			"createdAt": "2025-04-01T18:18:41.893Z",
+			"updatedAt": "2025-04-01T18:18:41.893Z"
+		}
+	]
+}
