@@ -111,6 +111,7 @@ export class SquidRouter implements INodeType {
 			{
 				displayName: 'Source Token Address',
 				name: 'sourceToken',
+				// eslint-disable-next-line n8n-nodes-base/node-param-type-options-password-missing
 				type: 'string',
 				required: true,
 				default: '',
@@ -123,6 +124,7 @@ export class SquidRouter implements INodeType {
 			{
 				displayName: 'Target Token Address',
 				name: 'targetToken',
+				// eslint-disable-next-line n8n-nodes-base/node-param-type-options-password-missing
 				type: 'string',
 				required: true,
 				default: '',

@@ -1,5 +1,5 @@
 {
-	"name": "n8n-nodes-web3",
+	"name": "@majus/n8n-nodes-web3",
 	"version": "0.1.0",
 	"description": "Collection of custom n8n nodes for web3 & blockchain integration",
 	"keywords": [
@@ -27,7 +27,7 @@
 		"format": "prettier nodes credentials --write",
 		"lint": "eslint nodes credentials package.json",
 		"lintfix": "eslint nodes credentials package.json --fix",
-		"prepublishOnly": "npm build && npm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
 	},
 	"files": [
 		"dist"
