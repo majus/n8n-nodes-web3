@@ -79,7 +79,7 @@ How to install:
 1. Copy "Production URL" from the "Webhook" trigger node
 1. Post this link on Farcaster and test it!
 
-[Screencast from 2025-04-01 21-53-23.webm](https://github.com/user-attachments/assets/85341cd5-d76d-4be4-b8e9-6eb9c748a5b7)
+[Screencast from 2025-04-01 22-10-49.webm](https://github.com/user-attachments/assets/557dd305-c0e8-40c7-ba25-e29b93b7f6c2)
 
 ## Roadmap
 
