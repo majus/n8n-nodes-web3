@@ -19,9 +19,29 @@ That’s where we come in! Our project adds seamless web3 functionalities, makin
 
 ![n8n-web3-2025-01-21-1421](./assets/n8n-web3.png)
 
+There are many clear evidences that web3 integration is demanded by no-code developers community:
+
+- [Need a node to read onchain data](https://community.n8n.io/t/need-a-node-to-read-onchain-data-blockchain-web3/30893)
+- [Looking for a freelance for web3 script](https://community.n8n.io/t/looking-for-a-freelance-for-web3-script/54251)
+- [How to automate Stripe to Web3 smart contracts?](https://community.n8n.io/t/how-to-automate-stripe-to-web3-smart-contracts/19805)
+- [External crypto packages not working, others do](https://community.n8n.io/t/external-crypto-packages-not-working-others-do/34850)
+- [Connecting with Farcaster (social media protocol)](https://community.n8n.io/t/connecting-with-farcaster-social-media-protocol/68412)
+- [Looking for a Blockchain-Based Data Node—Or Should I Build One?](https://community.n8n.io/t/looking-for-a-blockchain-based-data-node-or-should-i-build-one/79008)
+- [N8n Blockchain/Web3 connectors needed?](https://community.n8n.io/t/n8n-blockchain-web3-connectors-needed/26899)
+- [I Created a Solana Node for n8n](https://community.n8n.io/t/i-created-a-solana-node-for-n8n/91289)
+- [Add ECDSA algorithm to Crypto Node](https://community.n8n.io/t/add-ecdsa-algorithm-to-crypto-node/12228)
+- [Node for Interfacing with JsonRPC](https://community.n8n.io/t/node-for-interfacing-with-jsonrpc/5284)
+
 ## Operations
 
-With **n8n × web3**, no-code developers can effortlessly add blockchain features to their workflows. Plus, pro web3 developers can quickly prototype their decentralized apps and blockchain solutions without the hassle. Our custom nodes handle common blockchain tasks like:
+With **n8n × web3**, no-code developers can effortlessly add blockchain features to their workflows. Plus, pro web3 developers can quickly prototype their decentralized apps and blockchain solutions without the hassle.
+
+Currently, there are following custom nodes available:
+
+- "Farcaster: Frame builder" — allows to build Farcaster frames standard compliant HTML markup.
+- "Farcaster: Transaction builder" — simplifies creating Farcaster frames standard compliant transaction request data.
+
+We plant for our future custom nodes handle common blockchain tasks like:
 
 - Converting data between JavaScript and Solidity
 - Signing data with ECDSA
