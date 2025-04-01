@@ -41,6 +41,7 @@ Currently, there are following custom nodes available:
 - "Farcaster: Transaction builder" — simplifies creating [Farcaster frames standard](https://docs.farcaster.xyz/developers/frames/) compliant transaction request data.
 - "Lilypad Generic Job" — allows to issue generic job to the [Lilypad](https://lilypad.tech/) TEE.
 - "Lilypad Llama3 Job" — allows to issue Llama3 specific job to the [Lilypad](https://lilypad.tech/) TEE.
+- "Squid Router" — allows to perform token swaps between different blockchains via the [Squid Router](https://www.squidrouter.com/) API.
 
 We plant for our future custom nodes handle common blockchain tasks like:
 

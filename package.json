@@ -35,13 +35,15 @@
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"credentials": [
-			"dist/credentials/LilypadCredentialsApi.credentials.js"
+			"dist/credentials/LilypadCredentialsApi.credentials.js",
+			"dist/credentials/SquidApi.credentials.js"
 		],
 		"nodes": [
 			"dist/nodes/FrameBuilder/FrameBuilder.node.js",
 			"dist/nodes/EthereumTxBuilder/EthereumTxBuilder.node.js",
 			"dist/nodes/LilypadGenericJob/LilypadGenericJob.node.js",
-			"dist/nodes/LilypadLlama3Job/LilypadLlama3Job.node.js"
+			"dist/nodes/LilypadLlama3Job/LilypadLlama3Job.node.js",
+			"dist/nodes/SquidRouter/SquidRouter.node.js"
 		]
 	},
 	"devDependencies": {
