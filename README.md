@@ -1,6 +1,6 @@
 # n8n-nodes-web3
 
-**n8n × web** is a collection of custom nodes built for n8n, the popular open-source no-code workflow automation tool.
+**n8n × web3** is a collection of custom nodes built for n8n, the popular open-source no-code workflow automation tool.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
