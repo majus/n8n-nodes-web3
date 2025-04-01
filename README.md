@@ -6,6 +6,8 @@
 
 ## Installation
 
+The community package name is `@majus/n8n-nodes-web3`.
+
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 ## Motivation
