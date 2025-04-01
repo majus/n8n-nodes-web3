@@ -67,6 +67,8 @@ _By the time users are looking for community nodes, they probably already know n
 
 Allow users to make a small tip in ETH to any address via Farcaster.
 
+![Screenshot from 2025-04-01 22-03-39](https://github.com/user-attachments/assets/f071ee58-a5b0-4afa-92d3-d14d90614098)
+
 Custom nodes used: Farcaster Frame builder, Farcaster Tx Builder.
 
 How to install:
@@ -76,6 +78,8 @@ How to install:
 1. Activate the workflow
 1. Copy "Production URL" from the "Webhook" trigger node
 1. Post this link on Farcaster and test it!
+
+[Screencast from 2025-04-01 21-53-23.webm](https://github.com/user-attachments/assets/85341cd5-d76d-4be4-b8e9-6eb9c748a5b7)
 
 ## Roadmap
 
