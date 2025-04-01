@@ -45,15 +45,6 @@ Currently, there are following custom nodes available:
 - "Flow Mutate" — allows to perform the [Flow blockchain](https://flow.com) write operations via FVM.
 - "Flow Query" — allows to perform the [Flow blockchain](https://flow.com) read operations via FVM.
 
-We plant for our future custom nodes handle common blockchain tasks like:
-
-- Converting data between JavaScript and Solidity
-- Signing data with ECDSA
-- Sending raw transactions via JSON RPC
-- Automatically generating transaction data from Smart Contract ABIs
-- Using standard Smart Contract ABIs without any coding
-- Listening for blockchain events to trigger workflows
-
 <!-- ## Credentials
 
 _If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._ -->
@@ -70,7 +61,18 @@ _By the time users are looking for community nodes, they probably already know n
 
 ## Roadmap
 
-Down the road, we’d love to expand even more—think support for non-EVM blockchains like Bitcoin, Solana, and Flow, or adding tools for working directly with Solidity and managing ZK proofs. Eventually, we aim to have these nodes integrated into n8n’s core, joining the existing ~200 web2 service nodes and making blockchain automation a breeze for everyone.
+We plan for our future custom nodes handle common blockchain tasks like:
+
+- Converting data between JavaScript and Solidity
+- Signing data with ECDSA
+- Sending raw transactions via JSON RPC
+- Automatically generating transaction data from Smart Contract ABIs
+- Using standard Smart Contract ABIs without any coding
+- Listening for blockchain events to trigger workflows
+
+Down the road, we’d love to expand even more—think support for non-EVM blockchains like Bitcoin and Solana, or adding tools for working directly with Solidity and managing ZK proofs.
+
+Eventually, we aim to have our nodes integrated into n8n’s core, joining the existing ~200 web2 service nodes and making blockchain automation a breeze for everyone.
 
 ## Resources
 
