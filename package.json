@@ -1,6 +1,6 @@
 {
 	"name": "@majus/n8n-nodes-web3",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Collection of custom n8n nodes for web3 & blockchain integration",
 	"keywords": [
 		"n8n-community-node-package"
@@ -62,6 +62,12 @@
 		"n8n-workflow": "*"
 	},
 	"dependencies": {
-		"lodash": "^4.17.21"
+		"@0xsquid/sdk": "^2.9.3",
+		"@onflow/fcl": "^1.15.0",
+		"@onflow/types": "^1.4.1",
+		"elliptic": "^6.6.1",
+		"jsdom": "^26.0.0",
+		"lodash": "^4.17.21",
+		"sha3": "^2.1.4"
 	}
 }
