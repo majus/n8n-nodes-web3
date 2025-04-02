@@ -85,6 +85,8 @@ How to use:
 
 Fetch tokens supported by Squid, find out USDT address on BNB chain and USDC address on Arbitrum and get a swap route for these.
 
+![Screenshot from 2025-04-02 15-10-11](https://github.com/user-attachments/assets/5e66189f-f28b-4ac1-bb14-63a545c50da1)
+
 Custom nodes used: Squid Router.
 
 How to use:
@@ -93,6 +95,8 @@ How to use:
 1. Import `examples/squid-route.json`
 1. Execute the workflow manually.
 1. Double click on the rightmost node and check the route data.
+
+[Screencast from 2025-04-02 15-08-04.webm](https://github.com/user-attachments/assets/c5f70fd8-20c4-4ada-a840-d6316be31123)
 
 ## Roadmap
 
