@@ -63,7 +63,7 @@ _By the time users are looking for community nodes, they probably already know n
 
 ## Examples
 
-### Farcaster Tip
+### Farcaster tip
 
 Allow users to make a small tip in ETH to any address via Farcaster.
 
@@ -71,15 +71,28 @@ Allow users to make a small tip in ETH to any address via Farcaster.
 
 Custom nodes used: Farcaster Frame builder, Farcaster Tx Builder.
 
-How to install:
+How to use:
 
-1. Create a new empty workflow
-1. Import `examples/farcaster-tip.json` into the workflow
-1. Activate the workflow
-1. Copy "Production URL" from the "Webhook" trigger node
+1. Create a new empty workflow.
+1. Import `examples/farcaster-tip.json` into the workflow.
+1. Activate the workflow.
+1. Copy "Production URL" from the "Webhook" trigger node.
 1. Post this link on Farcaster and test it!
 
 [Screencast from 2025-04-01 22-10-49.webm](https://github.com/user-attachments/assets/557dd305-c0e8-40c7-ba25-e29b93b7f6c2)
+
+### Squid route
+
+Fetch tokens supported by Squid, find out USDT address on BNB chain and USDC address on Arbitrum and get a swap route for these.
+
+Custom nodes used: Squid Router.
+
+How to use:
+
+1. Create a new empty workflow.
+1. Import `examples/squid-route.json`
+1. Execute the workflow manually.
+1. Double click on the rightmost node and check the route data.
 
 ## Roadmap
 

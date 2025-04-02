@@ -1,0 +1,323 @@
+{
+  "name": "Squid Router example",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -560
+      ],
+      "id": "4e28b70a-a23f-476f-9c41-5f05812c76b2",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        640,
+        -560
+      ],
+      "id": "61d8cb16-3982-47d8-83df-771e3d037c45",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "tokens",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        860,
+        -560
+      ],
+      "id": "fb6411ab-ed58-43d7-947c-98c8ed44fbaa",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "sender": "0xCa5a940E87cC4D4cC9F5F749c58a4DDcA79a3328",
+        "recipient": "0xCa5a940E87cC4D4cC9F5F749c58a4DDcA79a3328",
+        "sourceChain": "={{ $json.tokens[0].chainId }}",
+        "targetChain": "={{ $json.tokens[1].chainId }}",
+        "sourceToken": "={{ $json.tokens[0].address }}",
+        "targetToken": "={{ $json.tokens[1].address }}",
+        "amount": 0.1,
+        "slippage": 1
+      },
+      "type": "@majus/n8n-nodes-web3.squidRouter",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        -560
+      ],
+      "id": "4d76f902-b654-40a1-997b-31747161529b",
+      "name": "Get Route",
+      "credentials": {
+        "squidApi": {
+          "id": "YPztnW2PWlIALtuz",
+          "name": "Squid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "tokens"
+      },
+      "type": "@majus/n8n-nodes-web3.squidRouter",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -560
+      ],
+      "id": "bc1c9555-d810-44f5-b667-d1f4ddb20e7a",
+      "name": "Fetch tokens",
+      "credentials": {
+        "squidApi": {
+          "id": "YPztnW2PWlIALtuz",
+          "name": "Squid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4d62bddb-780d-4534-a9cf-fe476045f66e",
+              "leftValue": "={{ $json.chainId }}",
+              "rightValue": "56",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "a2e930ec-b7cb-438c-bd4b-8f59d2e23839",
+              "leftValue": "={{ $json.symbol }}",
+              "rightValue": "USDT",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        -660
+      ],
+      "id": "f66595eb-b6b5-403f-aba1-716e3206eaa8",
+      "name": "Filter BNB tokens"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        420,
+        -660
+      ],
+      "id": "e00ba3a5-6e57-4053-8abe-4b62fbad3aee",
+      "name": "Pick one BNB token"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        420,
+        -460
+      ],
+      "id": "b28bbfcb-806f-4e33-a472-050465fe4b18",
+      "name": "Pick one Arbitrum token"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4d62bddb-780d-4534-a9cf-fe476045f66e",
+              "leftValue": "={{ $json.chainId }}",
+              "rightValue": "42161",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "16f5bd89-5a90-4af1-ad90-d7a1745f3be3",
+              "leftValue": "={{ $json.symbol }}",
+              "rightValue": "USDC",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        -460
+      ],
+      "id": "1927024b-42dc-4a76-88a9-ae98d44cf087",
+      "name": "Filter Arbitrum tokens"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Fetch tokens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Get Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch tokens": {
+      "main": [
+        [
+          {
+            "node": "Filter BNB tokens",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter Arbitrum tokens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter BNB tokens": {
+      "main": [
+        [
+          {
+            "node": "Pick one BNB token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick one BNB token": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick one Arbitrum token": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filter Arbitrum tokens": {
+      "main": [
+        [
+          {
+            "node": "Pick one Arbitrum token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7a1d567e-3427-4485-92fb-d387a18ce2ae",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a127041ab2c0a456c612db2c737ce582ec8f8dd14205bcdca991d2585b3c019"
+  },
+  "id": "UznFdOTbrtAMmtAi",
+  "tags": [
+    {
+      "createdAt": "2025-04-01T18:18:41.893Z",
+      "updatedAt": "2025-04-01T18:18:41.893Z",
+      "id": "Rd7qq8NCOaSuEgiS",
+      "name": "web3"
+    },
+    {
+      "createdAt": "2025-04-01T19:31:51.701Z",
+      "updatedAt": "2025-04-01T19:31:51.701Z",
+      "id": "m23BpGwtJij9ZoW8",
+      "name": "squid"
+    },
+    {
+      "createdAt": "2025-04-01T19:31:57.478Z",
+      "updatedAt": "2025-04-01T19:31:57.478Z",
+      "id": "22Chwv0PNDBTWBl1",
+      "name": "example"
+    }
+  ]
+}
