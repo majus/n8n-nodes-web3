@@ -7,6 +7,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 import { Squid } from '@0xsquid/sdk';
+import { setTimeout } from 'timers/promises';
 // import { ethers } from 'ethers';
 
 export class SquidRouter implements INodeType {
@@ -157,19 +158,6 @@ export class SquidRouter implements INodeType {
 					numberPrecision: 2,
 				},
 				default: '',
-				required: true,
-				displayOptions: {
-					show: {
-						operation: ['route'],
-					},
-				},
-			},
-			//TODO: Make optional
-			{
-				displayName: 'Enable Boost',
-				name: 'boost',
-				type: 'boolean',
-				default: false,
 				displayOptions: {
 					show: {
 						operation: ['route'],
@@ -184,11 +172,12 @@ export class SquidRouter implements INodeType {
 		const items = this.getInputData();
 		const { integrator } = await this.getCredentials('squidApi');
 		const squid = new Squid({
-			baseUrl: 'https://apiplus.squidrouter.com',
-			// @ts-ignore
+			baseUrl: 'https://v2.api.squidrouter.com',
 			integratorId: integrator,
 		});
 		await squid.init();
+		//FIXME: Dirty fix for 429 error
+		await setTimeout(1000);
 		for (let index = 0; index < items.length; index++) {
 			try {
 				const operation = this.getNodeParameter('operation', index, '') as string;
@@ -202,8 +191,7 @@ export class SquidRouter implements INodeType {
 							const sourceToken = this.getNodeParameter('sourceToken', index, '') as string;
 							const targetToken = this.getNodeParameter('targetToken', index, '') as string;
 							const amount = this.getNodeParameter('amount', index, 0) as number;
-							const boost = this.getNodeParameter('boost', index) as boolean;
-							const slippage = this.getNodeParameter('boost', index) as number;
+							const slippage = this.getNodeParameter('slippage', index) as number;
 							const response = await squid.getRoute({
 								fromAddress: sender,
 								fromChain: sourceChain,
@@ -213,19 +201,16 @@ export class SquidRouter implements INodeType {
 								toToken: targetToken,
 								toAddress: recipient,
 								slippage,
-								enableBoost: boost,
-								//TODO: quoteOnly?: boolean;
-								//TODO: preHook?: Hook;
-								//TODO: postHook?: Omit<Hook, "fundAmount" | "fundToken">;
-								//TODO: prefer?: DexName[];
-								//TODO: receiveGasOnDestination?: boolean;
-								//TODO: fallbackAddresses?: FallbackAddress[];
-								//TODO: bypassGuardrails?: boolean;
-								//TODO: onChainQuoting?: boolean;
-								// @ts-ignore
-								enableForecall: true,
-								// @ts-ignore
-								slippageConfig: { autoMode: 1 },
+								// quoteOnly?: boolean;
+								// preHook?: Hook;
+								// postHook?: Omit<Hook, "fundAmount" | "fundToken">;
+								// prefer?: DexName[];
+								// receiveGasOnDestination?: boolean;
+								// fallbackAddresses?: FallbackAddress[];
+								// bypassGuardrails?: boolean;
+								// customParams?: {
+								// 	jitoTipFeeInLamports?: string;
+								// };
 							});
 							outputs.push({ json: response });
 						}
@@ -249,6 +234,9 @@ export class SquidRouter implements INodeType {
 						throw new Error(`Unsupported action: ${operation}`);
 				}
 			} catch (error) {
+				if (error.name === 'AxiosError') {
+					error = new Error(error.response.data.message);
+				}
 				if (this.continueOnFail()) {
 					const [{ json }] = this.getInputData(index);
 					items.push({ json, error, pairedItem: index });
