@@ -92,9 +92,24 @@ Custom nodes used: Squid Router.
 How to use:
 
 1. Create a new empty workflow.
-1. Import `examples/squid-route.json`
+1. Import `examples/squid-route.json`.
+1. Double-click on each of the Squid nodes and choose Squid API access credentials (obtain one [here](https://squidrouter.typeform.com/integrator-id)).
 1. Execute the workflow manually.
-1. Double click on the rightmost node and check the route data.
+1. Double-click on the rightmost node and check the route data.
+
+### Flow balances (FLIX)
+
+Fetch all token balances for a Flow account using FLIX template.
+
+Custom nodes used: Flow Query.
+
+How to use:
+
+1. Create a new empty worflow.
+1. Import `examples/flow-flix-balances.json`.
+1. Double-click on the Flow Query node and choose the Flow FVM account credentials, or create one using account address, key index and a private key.
+1. Execute the workflow manually.
+1. Double-click on the rightmost node and check the account balances.
 
 [Screencast from 2025-04-02 15-08-04.webm](https://github.com/user-attachments/assets/c5f70fd8-20c4-4ada-a840-d6316be31123)
 

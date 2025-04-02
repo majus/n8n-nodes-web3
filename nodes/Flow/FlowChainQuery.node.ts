@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
@@ -20,9 +21,7 @@ export class FlowChainQuery implements INodeType {
 		defaults: {
 			name: 'Flow - Query',
 		},
-		// @ts-ignore
 		inputs: ['main'],
-		// @ts-ignore
 		outputs: ['main'],
 		credentials: [
 			{
@@ -53,8 +52,9 @@ export class FlowChainQuery implements INodeType {
 				const templateRaw = this.getNodeParameter('template', index, '') as string;
 				const template = isString(templateRaw) ? JSON.parse(templateRaw) : templateRaw;
 				const { argsList, argsField } = this.getNodeParameter('options', index) as any;
-				// @ts-ignore
-				const args = argsList?.items.map(({ value }) => value) ?? items[index].json[argsField];
+				const args =
+					argsList?.items.map(({ value }) => value) ??
+					(argsField ? items[index].json[argsField] : []);
 				const json = await flowQuery(template, args);
 				outputs.push({ json });
 			} catch (error) {
