@@ -97,9 +97,13 @@ How to use:
 1. Execute the workflow manually.
 1. Double-click on the rightmost node and check the route data.
 
+[Screencast from 2025-04-02 15-08-04.webm](https://github.com/user-attachments/assets/c5f70fd8-20c4-4ada-a840-d6316be31123)
+
 ### Flow balances (FLIX)
 
 Fetch all token balances for a Flow account using FLIX template.
+
+![Screenshot from 2025-04-02 15-46-07](https://github.com/user-attachments/assets/62729a4f-ec3b-47cb-9acf-f56371e3f601)
 
 Custom nodes used: Flow Query.
 
@@ -111,7 +115,7 @@ How to use:
 1. Execute the workflow manually.
 1. Double-click on the rightmost node and check the account balances.
 
-[Screencast from 2025-04-02 15-08-04.webm](https://github.com/user-attachments/assets/c5f70fd8-20c4-4ada-a840-d6316be31123)
+[Screencast from 2025-04-02 15-45-07.webm](https://github.com/user-attachments/assets/f0909f80-1a19-4063-9747-a1ffe4eec23c)
 
 ## Roadmap
 
