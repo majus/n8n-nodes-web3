@@ -39,6 +39,8 @@ With **n8n × web3**, no-code developers can effortlessly add blockchain feature
 
 Currently, there are following custom nodes available:
 
+- "Ethereum Transaction builder" — allows to build and sign EVM transactions data.
+- "Ethereum Transaction executor" — allows to execute EVM transactions data.
 - "Farcaster: Frame builder" — allows to build [Farcaster frames standard](https://docs.farcaster.xyz/developers/frames/) compliant HTML markup.
 - "Farcaster: Transaction builder" — simplifies creating [Farcaster frames standard](https://docs.farcaster.xyz/developers/frames/) compliant transaction request data.
 - "Lilypad Generic Job" — allows to issue generic job to the [Lilypad](https://lilypad.tech/) TEE.
@@ -63,13 +65,27 @@ _By the time users are looking for community nodes, they probably already know n
 
 ## Examples
 
+### Ethereum transaction
+
+Allow to transfer an arbitrary amount of ETH from one account to another on EVM blockchain.
+
+Custom nodes used: Ethereum Frame builder, Ethereum Transaction Builder.
+
+How to use:
+
+1. Create a new empty workflow.
+1. Import `examples/ethereum-tx.json` into the workflow.
+1. Double-click on each of the Ethereum nodes and choose Ethereum API access credentials.
+1. Execute the workflow manually.
+1. Double-click on the rightmost node and check the transaction receipt data.
+
 ### Farcaster tip
 
 Allow users to make a small tip in ETH to any address via Farcaster.
 
 ![Screenshot from 2025-04-01 22-03-39](https://github.com/user-attachments/assets/f071ee58-a5b0-4afa-92d3-d14d90614098)
 
-Custom nodes used: Farcaster Frame builder, Farcaster Tx Builder.
+Custom nodes used: Farcaster Frame builder, Farcaster Transaction Builder.
 
 How to use:
 

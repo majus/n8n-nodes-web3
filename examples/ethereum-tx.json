@@ -1,0 +1,96 @@
+{
+  "name": "Ethereum transaction example",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3f7ca78c-9683-4ffe-a4e8-c754eabb6b17",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "recipient": "0xb14B3Fc37821BD26eF98354F9637c440d04BE667",
+        "value": 0.0001,
+        "additionalFields": {}
+      },
+      "type": "CUSTOM.ethereumTxBuilder",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "4ca76af0-0b45-4b14-b252-becf87680b86",
+      "name": "Build Transaction",
+      "credentials": {
+        "ethereumApi": {
+          "id": "Akzkzxq5rX10QnsY",
+          "name": "Ethereum account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "recipient": "={{ $json.recipient }}",
+        "value": "={{ $json.value }}",
+        "nonce": "={{ $json.nonce }}",
+        "calldata": "={{ $json.data }}",
+        "signature": "={{ $json.signature }}"
+      },
+      "type": "CUSTOM.ethereumTxExecutor",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "cb239ad3-7c47-4baa-ae3a-422b2fec72dd",
+      "name": "Execute Transaction",
+      "credentials": {
+        "ethereumApi": {
+          "id": "Akzkzxq5rX10QnsY",
+          "name": "Ethereum account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Build Transaction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Transaction": {
+      "main": [
+        [
+          {
+            "node": "Execute Transaction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f125e62c-8a65-4327-b56d-a014a0c2e928",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7b1ecae894b248fccafdb8c5847080ed77495ab089ff427d7206a333287b4996"
+  },
+  "id": "eefG67LQ4dKYGU2o",
+  "tags": []
+}
