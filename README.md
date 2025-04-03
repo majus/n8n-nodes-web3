@@ -69,6 +69,8 @@ _By the time users are looking for community nodes, they probably already know n
 
 Allow to transfer an arbitrary amount of ETH from one account to another on EVM blockchain.
 
+![Screenshot from 2025-04-03 21-59-32](https://github.com/user-attachments/assets/d7dab2bb-df5c-4100-a1de-2e6833b9a559)
+
 Custom nodes used: Ethereum Frame builder, Ethereum Transaction Builder.
 
 How to use:
@@ -78,6 +80,8 @@ How to use:
 1. Double-click on each of the Ethereum nodes and choose Ethereum API access credentials.
 1. Execute the workflow manually.
 1. Double-click on the rightmost node and check the transaction receipt data.
+
+[Screencast from 2025-04-03 21-58-55.webm](https://github.com/user-attachments/assets/3490764c-99f2-4142-84d3-223177c05e01)
 
 ### Farcaster tip
 
