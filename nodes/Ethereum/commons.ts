@@ -36,6 +36,16 @@ export const Blockchains = [
 		endpoint: 'https://base-sepolia.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'base-sepolia',
 	},
+	{
+		name: 'Testnet: Nahmii 3 Testnet',
+		endpoint: 'https://rpc.testnet.nahmii.io',
+		value: 'nahmii-testnet',
+	},
+	{
+		name: 'Nahmii 3 Mainnet',
+		endpoint: 'https://rpc.n3.nahmii.io',
+		value: 'nahmii-3',
+	}
 ];
 
 export const Property: Record<string, INodeProperties> = {
