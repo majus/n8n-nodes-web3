@@ -18,7 +18,7 @@
         "value": 0.0001,
         "additionalFields": {}
       },
-      "type": "CUSTOM.ethereumTxBuilder",
+      "type": "@majus/n8n-nodes-web3.ethereumTxBuilder",
       "typeVersion": 1,
       "position": [
         220,
@@ -41,7 +41,7 @@
         "calldata": "={{ $json.data }}",
         "signature": "={{ $json.signature }}"
       },
-      "type": "CUSTOM.ethereumTxExecutor",
+      "type": "@majus/n8n-nodes-web3.ethereumTxExecutor",
       "typeVersion": 1,
       "position": [
         440,
