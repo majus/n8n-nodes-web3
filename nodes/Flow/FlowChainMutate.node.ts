@@ -58,6 +58,7 @@ export class FlowChainMutate implements INodeType {
 				// @ts-ignore
 				const args = argsList?.items.map(({ value }) => value) ?? items[index].json[argsField];
 				const json = await flowMutate(template, args, account, limit);
+				// @ts-ignore
 				outputs.push({ json });
 			} catch (error) {
 				if (this.continueOnFail()) {

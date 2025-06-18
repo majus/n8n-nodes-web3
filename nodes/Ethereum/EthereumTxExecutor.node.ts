@@ -24,7 +24,8 @@ export class EthereumTxExecutor implements INodeType {
 			},
 		],
 		properties: [
-			{ ...Property.Blockchain, required: true },
+			Property.Blockchain,
+			{ ...Property.CustomRPC, required: true },
 			{ ...Property.Recipient, required: true },
 			Property.Value,
 			{ ...Property.Nonce, required: true },
@@ -46,15 +47,14 @@ export class EthereumTxExecutor implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 		for (let i = 0; i < items.length; i++) {
-			const chain = this.getNodeParameter('chain', i) as string;
+			const chain = this.getNodeParameter('chain', i) as string || this.getNodeParameter('rpc', i) as string;
 			const recipient = this.getNodeParameter('recipient', i) as string;
 			const value = this.getNodeParameter('value', i) as string;
 			const nonce = this.getNodeParameter('nonce', i) as number;
 			const signature = this.getNodeParameter('signature', i) as string;
 			const data = this.getNodeParameter('calldata', i) as string;
 			const gasLimit = this.getNodeParameter('gasLimit', i) as number;
-			const endpoint = Blockchains.find((b) => b.value === chain).endpoint;
-			const provider = new ethers.getDefaultProvider(endpoint);
+			const provider = new ethers.getDefaultProvider(chain);
 			const signer = new ethers.Wallet(account.privateKey, provider);
 			const tx = await signer.sendTransaction({
 				to: recipient,

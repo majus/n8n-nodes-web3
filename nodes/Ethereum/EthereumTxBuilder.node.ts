@@ -2,7 +2,7 @@
 import { IExecuteFunctions } from 'n8n-core';
 import { INodeType, INodeExecutionData, INodeTypeDescription } from 'n8n-workflow';
 import { ethers } from 'ethers';
-import { Blockchains, Property } from './commons';
+import { Property } from './commons';
 
 export class EthereumTxBuilder implements INodeType {
 	description: INodeTypeDescription = {
@@ -24,7 +24,8 @@ export class EthereumTxBuilder implements INodeType {
 			},
 		],
 		properties: [
-			{ ...Property.Blockchain, required: true },
+			Property.Blockchain,
+			{ ...Property.CustomRPC, required: true },
 			{ ...Property.Recipient, required: true },
 			Property.Value,
 			{
@@ -48,7 +49,7 @@ export class EthereumTxBuilder implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 		for (let i = 0; i < items.length; i++) {
-			const chain = this.getNodeParameter('chain', i) as string;
+			const chain = this.getNodeParameter('chain', i) as string || this.getNodeParameter('rpc', i) as string;
 			const recipient = this.getNodeParameter('recipient', i) as string;
 			const value = this.getNodeParameter('value', i) as string;
 			const { contractAbi, contractAddress, contractMethod, contractArgs } = this.getNodeParameter(
@@ -60,8 +61,7 @@ export class EthereumTxBuilder implements INodeType {
 				const contract = new ethers.Contract(contractAddress, contractAbi, provider);
 				data = contract.interface.encodeFunctionData(contractMethod, contractArgs);
 			}
-			const endpoint = Blockchains.find((b) => b.value === chain).endpoint;
-			const provider = new ethers.getDefaultProvider(endpoint);
+			const provider = new ethers.getDefaultProvider(chain);
 			const signer = new ethers.Wallet(account.privateKey, provider);
 			const nonce = await signer.getNonce();
 			const signature = await signer.signTransaction({

@@ -3,38 +3,60 @@ import { INodeProperties } from 'n8n-workflow';
 export const Blockchains = [
 	{
 		name: 'Ethereum Mainnet',
-		endpoint: 'https://eth-mainnet.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'mainnet',
 	},
 	{
 		name: 'Testnet: Ethereum Sepolia',
-		endpoint: 'https://eth-sepolia.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'sepolia',
 	},
 	{
 		name: 'Testnet: Ethereum Holesky',
-		endpoint: 'https://eth-holesky.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'holesky',
 	},
 	{
+		name: 'Arbitrum Mainnet',
+		value: 'arbitrum',
+	},
+	{
+		name: 'Testnet: Arbitrum Sepolia',
+		value: 'arbitrum-sepolia',
+	},
+	{
 		name: 'Optimism Mainnet',
-		endpoint: 'https://opt-mainnet.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'optimism',
 	},
 	{
 		name: 'Testnet: Optimism Sepolia',
-		endpoint: 'https://opt-sepolia.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'optimism-sepolia',
 	},
 	{
 		name: 'Base Mainnet',
-		endpoint: 'https://base-mainnet.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'base',
 	},
 	{
 		name: 'Testnet: Base Sepolia',
-		endpoint: 'https://base-sepolia.g.alchemy.com/v2/Q0PzdW9Z-cVRK5Ji8TsAgboQVhG-kdvt',
 		value: 'base-sepolia',
+	},
+	{
+		name: 'Linea Mainnet',
+		value: 'linea',
+	},
+	{
+		name: 'Testnet: Linea Sepolia',
+		value: 'linea-sepolia',
+	},
+	{
+		name: 'BNB Chain Mainnet',
+		value: 'bnb',
+	},
+	{
+		name: 'Testnet: BNB Chain Testnet',
+		value: 'bnbt',
+	},
+	{
+		name: 'Custom',
+		endpoint: '',
+		value: '',
 	},
 ];
 
@@ -46,6 +68,19 @@ export const Property: Record<string, INodeProperties> = {
 		options: Blockchains,
 		default: 'sepolia',
 		description: 'Target blockchain',
+		hint: 'The default RPC endpoints are provided as a highly-throttled, so consider using a custom RPC endpoint',
+	},
+	CustomRPC: {
+		displayName: 'Custom RPC',
+		name: 'rpc',
+		type: 'string',
+		default: '',
+		description: 'Custom blockchain RPC endpoint URL',
+		displayOptions: {
+			show: {
+				'chain': [''],
+			},
+		},
 	},
 	Recipient: {
 		displayName: 'Recipient Address',
